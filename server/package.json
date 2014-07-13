@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ddhalpin/sqftpro",
   "dependencies": {
+    "requirejs": "^2.1.14",
     "restify": "^2.8.1"
   }
 }
