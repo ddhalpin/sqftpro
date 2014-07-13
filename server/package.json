@@ -1,7 +1,7 @@
 {
-  "name": "sqftpro",
+  "name": "server",
   "version": "0.0.1",
-  "description": "sqftpro =======",
+  "description": "",
   "main": "router.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ddhalpin/sqftpro/issues"
   },
-  "homepage": "https://github.com/ddhalpin/sqftpro"
+  "homepage": "https://github.com/ddhalpin/sqftpro",
+  "dependencies": {
+    "restify": "^2.8.1"
+  }
 }
