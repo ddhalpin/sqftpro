@@ -16,14 +16,41 @@
   <body>
     <script type="text/javascript">
       dhtmlx.image_path = "src/imgs/";
-      dhtmlxEvent(window,"load",function(){ 
+      dhtmlxEvent(window,"load",function() {
+
         var layout = new dhtmlXLayoutObject(document.body,"2U"); 
         layout.cells("a").setText("Contacts");   
         layout.cells("b").setText("Contact Details");           
         layout.cells("b").setWidth(500); 
+
         var menu = layout.attachMenu();
         menu.setIconsPath("icons/");
         menu.loadStruct("data/menu.xml");
+
+        var toolbar = layout.attachToolbar();
+        toolbar.setIconsPath("icons/");
+        toolbar.loadStruct("data/toolbar.xml");
+
+        var contactsGrid = layout.cells("a").attachGrid();
+        contactsGrid.setHeader("Name,Last Name,Email");   //sets the headers of columns
+        contactsGrid.setColumnIds("fname,lname,email");         //sets the columns' ids
+        contactsGrid.setInitWidths("250,250,*");   //sets the initial widths of columns
+        contactsGrid.setColAlign("left,left,left");     //sets the alignment of columns
+        contactsGrid.setColTypes("ro,ro,ro");               //sets the types of columns
+        contactsGrid.setColSorting("str,str,str");  //sets the sorting types of columns
+        contactsGrid.attachHeader("#text_filter,#text_filter,#text_filter");
+        contactsGrid.setEditable(true);
+        contactsGrid.init();
+
+        var rowId=contactsGrid.uid();                  //generates an unique id
+        var pos = contactsGrid.getRowsNum();  //gets the number of rows in grid
+        contactsGrid.addRow(rowId,["David","Halpin","dhalpin@me.com"],pos++);  //adds a new row   
+        contactsGrid.addRow(rowId,["Mike","Jones","mike@me.com"],pos++);  //adds a new row   
+        contactsGrid.addRow(rowId,["Bill","Harris","bharris@me.com"],pos++);  //adds a new row   
+ 
+
+        contactForm = layout.cells("b").attachForm();
+        contactForm.loadStruct("data/form.xml");
       }); 
     </script>
   </body>
